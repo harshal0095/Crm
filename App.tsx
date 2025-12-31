@@ -95,7 +95,7 @@ const App: React.FC = () => {
         <div className="p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-indigo-500/20">
-              C
+              T
             </div>
             {!isSidebarCollapsed && (
               <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">Trinetra</span>
