@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Bell, 
-  Search, 
-  Plus, 
-  ChevronLeft, 
-  ChevronRight, 
-  Moon, 
+import {
+  Bell,
+  Search,
+  Plus,
+  ChevronLeft,
+  ChevronRight,
+  Moon,
   Sun,
   Menu,
   X
@@ -27,7 +27,7 @@ const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
-  
+
   // App State
   const [leads, setLeads] = useState<Lead[]>(MOCK_LEADS);
   const [tasks, setTasks] = useState<Task[]>(MOCK_TASKS);
@@ -57,30 +57,30 @@ const App: React.FC = () => {
   const renderContent = () => {
     if (selectedLeadId) {
       return (
-        <CustomerProfile 
-          leadId={selectedLeadId} 
+        <CustomerProfile
+          leadId={selectedLeadId}
           leads={leads}
-          onBack={() => setSelectedLeadId(null)} 
+          onBack={() => setSelectedLeadId(null)}
         />
       );
     }
 
     switch (activeView) {
-      case 'Dashboard': 
+      case 'Dashboard':
         return <Dashboard leads={leads} onViewLead={setSelectedLeadId} />;
-      case 'Leads': 
+      case 'Leads':
         return <Leads leads={leads} onViewLead={setSelectedLeadId} viewMode="Leads" />;
-      case 'Customers': 
+      case 'Customers':
         return <Leads leads={leads} onViewLead={setSelectedLeadId} viewMode="Customers" />;
-      case 'Deals': 
+      case 'Deals':
         return <Deals leads={leads} onUpdateStatus={handleUpdateLeadStatus} />;
-      case 'Tasks': 
+      case 'Tasks':
         return <Tasks tasks={tasks} setTasks={setTasks} />;
-      case 'Reports': 
+      case 'Reports':
         return <Reports />;
-      case 'Settings': 
+      case 'Settings':
         return <Settings />;
-      default: 
+      default:
         return <Dashboard leads={leads} onViewLead={setSelectedLeadId} />;
     }
   };
@@ -88,10 +88,9 @@ const App: React.FC = () => {
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-[#0b0c10] transition-colors duration-300">
       {/* Sidebar - Desktop */}
-      <aside 
-        className={`hidden md:flex flex-col bg-white dark:bg-[#14161c] border-r border-slate-200 dark:border-slate-800 transition-all duration-300 z-30 ${
-          isSidebarCollapsed ? 'w-20' : 'w-64'
-        }`}
+      <aside
+        className={`hidden md:flex flex-col bg-white dark:bg-[#14161c] border-r border-slate-200 dark:border-slate-800 transition-all duration-300 z-30 ${isSidebarCollapsed ? 'w-20' : 'w-64'
+          }`}
       >
         <div className="p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -99,7 +98,7 @@ const App: React.FC = () => {
               C
             </div>
             {!isSidebarCollapsed && (
-              <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">CRM</span>
+              <span className="font-bold text-xl tracking-tight text-slate-800 dark:text-white">Trinetra</span>
             )}
           </div>
         </div>
@@ -109,11 +108,10 @@ const App: React.FC = () => {
             <button
               key={item.id}
               onClick={() => handleNavigate(item.id as ViewType)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
-                activeView === item.id 
-                  ? 'bg-indigo-50 dark:bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 font-semibold' 
-                  : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-700 dark:hover:text-slate-200'
-              }`}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${activeView === item.id
+                ? 'bg-indigo-50 dark:bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 font-semibold'
+                : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-700 dark:hover:text-slate-200'
+                }`}
             >
               <div className={`${activeView === item.id ? 'scale-110' : 'group-hover:scale-110'} transition-transform duration-200`}>
                 {item.icon}
@@ -127,7 +125,7 @@ const App: React.FC = () => {
         </nav>
 
         <div className="p-4 border-t border-slate-200 dark:border-slate-800">
-          <button 
+          <button
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 transition-colors"
           >
@@ -140,13 +138,13 @@ const App: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setIsMobileMenuOpen(false)} />
       )}
-      
+
       {/* Mobile Sidebar */}
       <div className={`fixed inset-y-0 left-0 w-64 bg-white dark:bg-[#14161c] z-50 transform transition-transform duration-300 md:hidden ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-         <div className="p-6 flex items-center justify-between border-b border-slate-200 dark:border-slate-800">
+        <div className="p-6 flex items-center justify-between border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">C</div>
-            <span className="font-bold text-xl text-slate-800 dark:text-white">CRM Pro</span>
+            <span className="font-bold text-xl text-slate-800 dark:text-white">Trinetra </span>
           </div>
           <button onClick={() => setIsMobileMenuOpen(false)} className="text-slate-500">
             <X size={24} />
@@ -157,11 +155,10 @@ const App: React.FC = () => {
             <button
               key={item.id}
               onClick={() => handleNavigate(item.id as ViewType)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl ${
-                activeView === item.id 
-                  ? 'bg-indigo-50 dark:bg-indigo-600/10 text-indigo-600 dark:text-indigo-400' 
-                  : 'text-slate-500 dark:text-slate-400'
-              }`}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl ${activeView === item.id
+                ? 'bg-indigo-50 dark:bg-indigo-600/10 text-indigo-600 dark:text-indigo-400'
+                : 'text-slate-500 dark:text-slate-400'
+                }`}
             >
               {item.icon}
               <span>{item.label}</span>
@@ -173,7 +170,7 @@ const App: React.FC = () => {
       <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative">
         <header className="h-20 bg-white/80 dark:bg-[#14161c]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-4 md:px-8 sticky top-0 z-20">
           <div className="flex items-center gap-4 flex-1">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="md:hidden p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"
             >
@@ -183,16 +180,16 @@ const App: React.FC = () => {
               <span className="absolute inset-y-0 left-3 flex items-center text-slate-400">
                 <Search size={18} />
               </span>
-              <input 
-                type="text" 
-                placeholder="Search everything..." 
+              <input
+                type="text"
+                placeholder="Search everything..."
                 className="w-full bg-slate-100 dark:bg-slate-800/50 border-none rounded-xl py-2.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all dark:text-slate-200"
               />
             </div>
           </div>
 
           <div className="flex items-center gap-2 md:gap-4">
-            <button 
+            <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-300"
             >
